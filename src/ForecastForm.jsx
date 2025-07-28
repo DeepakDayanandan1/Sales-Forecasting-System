@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ForecastForm() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,8 @@ function ForecastForm() {
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  const navigate = useNavigate();
 
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -38,7 +41,7 @@ function ForecastForm() {
       const data = await response.json();
 
       if (data.success) {
-        setPrediction(data.prediction);
+        navigate('/output', { state: { prediction: data.prediction, percentChange: data.percentChange ?? 0 } });
       } else {
         setError(data.error || 'Prediction failed');
       }
@@ -73,8 +76,8 @@ function ForecastForm() {
       {/* Header */}
       <header className="flex items-center p-4 shadow bg-white">
         <h1 className="text-xl font-bold flex items-center space-x-2">
-          <span role="img" aria-label="chart">📈</span>
-          <span>Sales Forecast</span>
+          <span role="img" aria-label="chart">📦</span>
+          <span>Sales Forecasting</span>
         </h1>
       </header>
 
@@ -82,8 +85,8 @@ function ForecastForm() {
       <main className="max-w-3xl mx-auto p-6">
         <h2 className="text-3xl font-bold mb-4">Sales Forecasting System</h2>
         <img
-          src="https://images.unsplash.com/photo-1607082349250-276b97feaa1c" // placeholder image
-          alt="Banner"
+          src="sfff.jpg"
+          alt="Sales Forecasting Banner"
           className="w-full h-40 object-cover rounded mb-6"
         />
 
@@ -151,7 +154,7 @@ function ForecastForm() {
               loading 
                 ? 'bg-gray-400 cursor-not-allowed' 
                 : 'bg-blue-500 hover:bg-blue-600'
-            } text-white`}
+            } text-white`} onClick={() => navigate('/output')}
           >
             {loading ? 'Processing...' : 'Forecast Sales'}
           </button>

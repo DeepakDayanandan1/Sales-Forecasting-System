@@ -87,24 +87,6 @@ curl -X POST http://localhost:5000/api/predict \
   -d '{"itemWeight": 1.5, "itemVisibility": 0.05, "itemMRP": 200}'
 ```
 
-## 📁 Project Structure
-
-```
-SF/
-├── backend/
-│   ├── api.py              # Flask API server
-│   ├── app.py              # Original Streamlit app
-│   ├── lr_model.pkl        # ML model
-│   ├── scaler.pkl          # Data scaler
-│   └── feature_columns.pkl # Feature columns
-├── src/
-│   ├── App.jsx             # Main React app
-│   ├── ForecastForm.jsx    # Prediction form
-│   └── LandingPage.tsx     # Landing page
-├── package.json            # Node.js dependencies
-├── requirements.txt        # Python dependencies
-└── start_dev.py           # Development helper script
-```
 
 ## 🎯 Features
 

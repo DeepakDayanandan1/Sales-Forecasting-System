@@ -15,7 +15,7 @@ function LandingPage() {
 
       {/* Main Content */}
       <main className="flex justify-center items-center h-[80vh] px-4">
-        <div className="bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-green-900 via-green-700 to-green-600 text-white rounded-2xl shadow-lg p-10 w-full max-w-4xl text-center">
+        <div className="text-white rounded-2xl shadow-lg p-10 w-full max-w-4xl text-center" style={{background: 'radial-gradient(ellipse at center, #14532d, #15803d, #16a34a)'}}>
           <h2 className="text-5xl font-extrabold mb-4 drop-shadow">Sales Forecasting System</h2>
           <p className="mb-8 text-lg font-medium">Enter product and outlet details to forecast future sales.</p>
           <button
