@@ -45,9 +45,10 @@ function ForecastForm() {
       } else {
         setError(data.error || 'Prediction failed');
       }
-    } catch (err) {
-      setError('Failed to connect to the server. Make sure the backend is running.');
-    } finally {
+    } //catch (e) {
+      //setError('Failed to connect to the server. Make sure the backend is running.');
+    //}
+     finally {
       setLoading(false);
     }
   };
@@ -60,8 +61,8 @@ function ForecastForm() {
           type="button"
           className={`px-4 py-2 rounded text-sm transition ${
             formData[field] === option
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-100 hover:bg-gray-200'
+              ? 'bg-green-700 text-white'
+              : 'bg-gray-100 hover:bg-green-200'
           }`}
           onClick={() => handleChange(field, option)}
         >
@@ -128,6 +129,7 @@ function ForecastForm() {
 
             <label className="block mt-4 mb-1">Item Fat Content</label>
             {buttonGroup('fatContent', ['Low Fat', 'Regular'])}
+
           </div>
 
           <div>
@@ -148,12 +150,12 @@ function ForecastForm() {
           </div>
 
           <button
-            type="submit"
+            type="submit" 
             disabled={loading}
             className={`px-6 py-2 rounded transition ${
               loading 
-                ? 'bg-gray-400 cursor-not-allowed' 
-                : 'bg-blue-500 hover:bg-blue-600'
+                ? 'bg-green-400 cursor-not-allowed' 
+                : 'bg-green-800 hover:bg-green-600'
             } text-white`} onClick={() => navigate('/output')}
           >
             {loading ? 'Processing...' : 'Forecast Sales'}

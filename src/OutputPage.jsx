@@ -5,8 +5,8 @@ function OutputPage() {
   const location = useLocation();
   const navigate = useNavigate();
   // Get prediction and percentChange from navigation state (default to demo values if not present)
-  const prediction = location.state?.prediction ?? 12500;
-  const percentChange = location.state?.percentChange ?? 15;
+  const prediction = location.state?.prediction ?? 0;
+  //const percentChange = location.state?.percentChange ?? 15;
 
   return (
     <div className="min-h-screen bg-[#f7f9fa]">
@@ -33,7 +33,7 @@ function OutputPage() {
           This prediction is based on historical data and the parameters you entered. Actual sales may vary depending on market conditions and other factors.
         </p>
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded font-semibold text-lg transition"
+          className="bg-green-800 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold text-lg transition"
           onClick={() => navigate('/forecast')}
         >
           Run Another Forecast
