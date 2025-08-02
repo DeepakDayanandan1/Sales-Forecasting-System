@@ -149,17 +149,19 @@ function ForecastForm() {
             {buttonGroup('itemType', ['Food', 'Drinks', 'Non-Consumables'])}
           </div>
 
+          <div className="flex justify-center">
           <button
             type="submit" 
             disabled={loading}
-            className={`px-6 py-2 rounded transition ${
+            className={`px-8 py-3 rounded transition cursor-pointer ${
               loading 
-                ? 'bg-green-400 cursor-not-allowed' 
-                : 'bg-green-800 hover:bg-green-600'
+                ? 'bg-green-600 cursor-not-allowed' 
+                : 'bg-green-600 hover:bg-green-800'
             } text-white`} onClick={() => navigate('/output')}
           >
             {loading ? 'Processing...' : 'Forecast Sales'}
           </button>
+          </div>
         </form>
 
         {/* Results */}

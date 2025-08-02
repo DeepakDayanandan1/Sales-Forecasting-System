@@ -33,7 +33,7 @@ function OutputPage() {
           This prediction is based on historical data and the parameters you entered. Actual sales may vary depending on market conditions and other factors.
         </p>
         <button
-          className="bg-green-800 hover:bg-green-600 text-white px-6 py-2 rounded font-semibold text-lg transition"
+          className="bg-green-600 hover:bg-green-800 text-white px-8 py-3 rounded font-semibold text-lg transition cursor-pointer"
           onClick={() => navigate('/forecast')}
         >
           Run Another Forecast
