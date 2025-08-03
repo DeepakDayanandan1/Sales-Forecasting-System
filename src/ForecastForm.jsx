@@ -194,7 +194,8 @@ function ForecastForm() {
               !isFormValid || loading
                 ? 'bg-green-600 cursor-not-allowed'
                 : 'bg-green-600 hover:bg-green-800'
-            } text-white`} 
+            } text-white`}
+            onClick={() => navigate('/output')}
           >
             {loading ? 'Processing...' : 'Forecast Sales'}
           </button>
