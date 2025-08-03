@@ -92,6 +92,3 @@ curl -X POST http://localhost:5000/api/predict \
 - ✅ Real-time ML predictions
 - ✅ Modern React UI with Tailwind CSS
 - ✅ Form validation and error handling
-- ✅ Loading states and user feedback
-- ✅ CORS-enabled API communication
-- ✅ Health check endpoints
