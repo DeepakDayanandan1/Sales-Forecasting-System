@@ -11,10 +11,10 @@ function OutputPage() {
   return (
     <div className="min-h-screen bg-[#f7f9fa]">
       {/* Navbar */}
-      <header className="flex items-center p-4 shadow bg-white">
+      <header className="flex flex-row items-left p-1 shadow bg-white">
         <h1 className="text-xl font-bold flex items-center space-x-2">
-          <span role="img" aria-label="chart">📦</span>
-          <span>Sales Forecast</span>
+          <img src="Logo1.svg" alt="Logo" className="w-20 h-18" />
+          <span className='text-2xl'>Sales Forecasting</span>
         </h1>
       </header>
 

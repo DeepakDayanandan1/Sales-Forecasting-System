@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function ForecastForm() {
   const [formData, setFormData] = useState({
@@ -16,6 +17,7 @@ function ForecastForm() {
   const [prediction, setPrediction] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [showValidationError, setShowValidationError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,6 +27,16 @@ function ForecastForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (
+  formData.itemWeight.trim() === '' ||
+  formData.itemVisibility.trim() === '' ||
+  formData.itemMRP.trim() === ''
+) {
+  setShowValidationError(true);
+  setTimeout(() => setShowValidationError(false), 3000); // hide after 3s
+  return;
+}
     setLoading(true);
     setError('');
     setPrediction(null);
@@ -53,6 +65,11 @@ function ForecastForm() {
     }
   };
 
+  const isFormValid =
+  formData.itemWeight.trim() !== '' &&
+  formData.itemVisibility.trim() !== '' &&
+  formData.itemMRP.trim() !== '';
+
   const buttonGroup = (field, options) => (
     <div className="flex flex-wrap gap-2 my-2">
       {options.map(option => (
@@ -75,21 +92,35 @@ function ForecastForm() {
   return (
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
-      <header className="flex items-center p-4 shadow bg-white">
-        <h1 className="text-xl font-bold flex items-center space-x-2">
-          <span role="img" aria-label="chart">📦</span>
-          <span>Sales Forecasting</span>
-        </h1>
+      <header className="flex flex-row items-left p-1 shadow bg-white">
+        <div className="text-xl font-bold flex items-center space-x-2">
+          <img src="Logo1.svg" alt="Logo" className="w-20 h-18" />
+          <Link to="/" className='text-2xl'>Sales Forecasting</Link>
+        </div>
       </header>
 
       {/* Form */}
       <main className="max-w-3xl mx-auto p-6">
-        <h2 className="text-3xl font-bold mb-4">Sales Forecasting System</h2>
+        {/* <h2 className="text-3xl font-bold mb-4">Sales Forecasting System</h2> 
         <img
           src="sfff.jpg"
           alt="Sales Forecasting Banner"
-          className="w-full h-40 object-cover rounded mb-6"
+          className="w-full h-60 object-cover rounded mb-6"
+        />*/}
+        <video
+          src="GreenscreenMotion2.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-60 object-cover object-bottom rounded mb-6"
         />
+
+        {showValidationError && (
+        <div className="mb-4 p-4 bg-red-100 text-red-800 border-l-4 border-red-600 rounded shadow-md text-sm">
+        ⚠️ Please fill in all required fields: Item Weight, Visibility, and MRP.
+        </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
@@ -101,7 +132,9 @@ function ForecastForm() {
               placeholder="Enter weight"
               value={formData.itemWeight}
               onChange={e => handleChange('itemWeight', e.target.value)}
-              className="w-full border rounded p-2 text-sm"
+              className={`w-full border rounded p-2 text-sm ${
+              showValidationError && formData.itemWeight.trim() === '' ? 'border-red-500' : ''
+              }`}
               required
             />
 
@@ -112,7 +145,9 @@ function ForecastForm() {
               placeholder="Enter visibility"
               value={formData.itemVisibility}
               onChange={e => handleChange('itemVisibility', e.target.value)}
-              className="w-full border rounded p-2 text-sm"
+              className={`w-full border rounded p-2 text-sm ${
+              showValidationError && formData.itemWeight.trim() === '' ? 'border-red-500' : ''
+              }`}
               required
             />
 
@@ -123,7 +158,9 @@ function ForecastForm() {
               placeholder="Enter MRP"
               value={formData.itemMRP}
               onChange={e => handleChange('itemMRP', e.target.value)}
-              className="w-full border rounded p-2 text-sm"
+              className={`w-full border rounded p-2 text-sm ${
+              showValidationError && formData.itemWeight.trim() === '' ? 'border-red-500' : ''
+              }`}
               required
             />
 
@@ -153,11 +190,11 @@ function ForecastForm() {
           <button
             type="submit" 
             disabled={loading}
-            className={`px-8 py-3 rounded transition cursor-pointer ${
-              loading 
-                ? 'bg-green-600 cursor-not-allowed' 
+            className={`px-8 py-3 rounded transition cursor-pointer font-semibold ${
+              !isFormValid || loading
+                ? 'bg-green-600 cursor-not-allowed'
                 : 'bg-green-600 hover:bg-green-800'
-            } text-white`} onClick={() => navigate('/output')}
+            } text-white`} 
           >
             {loading ? 'Processing...' : 'Forecast Sales'}
           </button>
