@@ -6,7 +6,6 @@ A full-stack application with a React frontend and Python Flask backend for sale
 
 - **Frontend**: Vite + React (TypeScript/JavaScript)
 - **Backend**: Flask API with ML model
-- **Communication**: REST API with CORS enabled
 
 ## 🚀 Quick Start
 

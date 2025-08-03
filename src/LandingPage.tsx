@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 function LandingPage() {
   const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Navbar */}
       <header className="flex flex-row items-left p-1 shadow bg-white">
         <h1 className="text-xl font-bold flex items-center space-x-2">

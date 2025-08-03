@@ -30,7 +30,7 @@ function OutputPage() {
           {/*<div className="text-green-600 font-semibold text-lg">+{percentChange}%</div>*/}
         </div>
         <p className="text-gray-600 text-center mb-8 max-w-2xl">
-          This prediction is based on historical data and the parameters you entered. Actual sales may vary depending on market conditions and other factors.
+          This prediction is based on historical data and the parameters you entered.
         </p>
         <button
           className="bg-green-600 hover:bg-green-800 text-white px-8 py-3 rounded font-semibold text-lg transition cursor-pointer"
